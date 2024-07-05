@@ -14,7 +14,8 @@ func save_data():
 		var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 		var data = {
 			"CreatedBy": auth.localid,
-			"player_position":  player.position }
+			"player_position":  player.position 
+			}
 		var task: FirestoreTask = collection.update(auth.localid, data)
 	pass
 
@@ -38,6 +39,10 @@ func get_docs(document):
 	var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 	var docs = await collection.get_doc(document.doc_name).get_document
 	print(docs.doc_fields.player_position)
-	var player_pos = Vector2i(str_to_var(docs.doc_fields.player_position))
-	player.position = player_pos
+	var pos: Array = docs.doc_fields.player_position.replace("(", "").replace(")", "").split(",")
+	player.position.x = int(pos[0])
+	player.position.y = int(pos[1])
+	print(player.position)
+	#var player_pos = Vector2i(str_to_var(docs.doc_fields.player_position))
+	#player.position = player_pos
 	pass
