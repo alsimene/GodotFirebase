@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://bptvqewuynb5a"]
+
+[ext_resource type="Script" path="res://scenes/jumpPad.gd" id="1_7nejf"]
+[ext_resource type="Texture2D" uid="uid://canqn4gcwty3b" path="res://assets/Tilemap/tilemap_packed.png" id="1_oi1bn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy2jd"]
+atlas = ExtResource("1_oi1bn")
+region = Rect2(144, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cljf"]
+atlas = ExtResource("1_oi1bn")
+region = Rect2(144, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krnrv"]
+atlas = ExtResource("1_oi1bn")
+region = Rect2(126, 90, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yh8su"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy2jd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cljf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krnrv")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvfkt"]
+size = Vector2(18, 18)
+
+[node name="JumpPad" type="Area2D"]
+script = ExtResource("1_7nejf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yh8su")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mvfkt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

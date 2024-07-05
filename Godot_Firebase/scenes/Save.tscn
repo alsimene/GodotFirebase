@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://1oi4rv0727eb"]
+
+[ext_resource type="Script" path="res://scenes/Save.gd" id="1_k04xk"]
+[ext_resource type="Script" path="res://scripts/Quit.gd" id="1_mvvlm"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Save" type="Button" parent="."]
+offset_left = 1068.0
+offset_top = 6.0
+offset_right = 1145.0
+offset_bottom = 65.0
+text = "Save"
+script = ExtResource("1_k04xk")
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 962.0
+offset_top = 7.0
+offset_right = 1031.0
+offset_bottom = 66.0
+text = "Quit"
+script = ExtResource("1_mvvlm")
+
+[node name="Load" type="Button" parent="."]
+offset_left = 872.0
+offset_top = 7.0
+offset_right = 957.0
+offset_bottom = 66.0
+text = "LOAD"
+
+[connection signal="pressed" from="Save" to="Save" method="_on_save_pressed"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="pressed" from="Load" to="Save" method="_on_load_pressed"]

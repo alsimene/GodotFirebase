@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://x6itl5488355"]
+
+[ext_resource type="Texture2D" uid="uid://canqn4gcwty3b" path="res://assets/Tilemap/tilemap_packed.png" id="1_eqlie"]
+
+[node name="Jewel" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_eqlie")
+region_enabled = true
+region_rect = Rect2(128, 56, 16, 16)

@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6r2u6wm40wwe"]
+
+[ext_resource type="Script" path="res://scripts/authentication.gd" id="1_kf2o4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ak102"]
+font_size = 36
+shadow_size = 13
+shadow_color = Color(0.14902, 0.109804, 0.0941176, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqxgl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5iomv"]
+font_size = 36
+shadow_size = 13
+shadow_color = Color(0.14902, 0.109804, 0.0941176, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blg2m"]
+
+[node name="Authentication" type="Node2D"]
+script = ExtResource("1_kf2o4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 448.0
+offset_right = 704.0
+offset_bottom = 644.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="StateLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Not Logged in
+"
+
+[node name="EmailLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Email"
+
+[node name="PasswordLineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Password"
+secret = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="LoginLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Login"
+label_settings = SubResource("LabelSettings_ak102")
+uppercase = true
+
+[node name="LoginButton" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/LoginLabel"]
+position = Vector2(56, 25)
+scale = Vector2(6.12, 2.36)
+shape = SubResource("RectangleShape2D_nqxgl")
+
+[node name="SignupLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Signup"
+label_settings = SubResource("LabelSettings_5iomv")
+uppercase = true
+
+[node name="SignupButton" type="TouchScreenButton" parent="VBoxContainer/HBoxContainer/SignupLabel"]
+position = Vector2(67, 25)
+rotation = 3.14159
+scale = Vector2(7.03151, -2.41832)
+shape = SubResource("RectangleShape2D_blg2m")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LoginLabel/LoginButton" to="." method="_on_login_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SignupLabel/SignupButton" to="." method="_on_signup_button_pressed"]
