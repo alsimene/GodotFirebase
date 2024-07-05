@@ -42,7 +42,4 @@ func get_docs(document):
 	var pos: Array = docs.doc_fields.player_position.replace("(", "").replace(")", "").split(",")
 	player.position.x = int(pos[0])
 	player.position.y = int(pos[1])
-	print(player.position)
-	#var player_pos = Vector2i(str_to_var(docs.doc_fields.player_position))
-	#player.position = player_pos
 	pass
