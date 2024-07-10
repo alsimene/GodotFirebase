@@ -7,7 +7,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player:
-		body.velocity.y = -300
+		body.velocity.y = -600
 		animated_sprite_2d.play("jump")
 		
 		
